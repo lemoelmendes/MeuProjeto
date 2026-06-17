@@ -19,6 +19,11 @@ namespace MeuProjeto.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult Registrar()
+        {
+            return View();
+        }
 
         [HttpPost]
         public IActionResult Login(LoginViewModel model)
@@ -65,6 +70,42 @@ namespace MeuProjeto.Controllers
             return RedirectToAction(
                 "Index",
                 "Home");
+        }
+
+        [HttpPost]
+        public IActionResult Registrar(RegistroViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            bool emailExiste = _context.Usuarios
+                .Any(u => u.Email == model.Email);
+
+            if (emailExiste)
+            {
+                ModelState.AddModelError(
+                    "",
+                    "Já existe um usuário com este e-mail.");
+
+                return View(model);
+            }
+
+            string hash = BCrypt.Net.BCrypt.HashPassword(
+                model.Senha);
+
+            var usuario = new Models.Usuario
+            {
+                Nome = model.Nome,
+                Email = model.Email,
+                SenhaHash = hash,
+                PerfilId = 2,
+                Ativo = true
+            };
+
+            _context.Usuarios.Add(usuario);
+            _context.SaveChanges();
+
+            return RedirectToAction("Login");
         }
 
         public IActionResult Logout()

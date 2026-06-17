@@ -1,0 +1,37 @@
+﻿@model MeuProjeto.ViewModels.RegistroViewModel
+
+<h2>Cadastro</h2>
+
+<form asp-action="Registrar" method="post">
+
+    <div>
+        <label asp-for="Nome"></label>
+        <input asp-for="Nome" />
+        <span asp-validation-for="Nome"></span>
+    </div>
+
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div>
+        <label asp-for="Senha"></label>
+        <input asp-for="Senha" type="password" />
+        <span asp-validation-for="Senha"></span>
+    </div>
+
+    <div>
+        <label asp-for="ConfirmarSenha"></label>
+        <input asp-for="ConfirmarSenha" type="password" />
+        <span asp-validation-for="ConfirmarSenha"></span>
+    </div>
+
+    <button type="submit">
+        Cadastrar
+    </button>
+
+</form>
+
+<div asp-validation-summary="All"></div>
