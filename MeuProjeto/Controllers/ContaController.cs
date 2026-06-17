@@ -66,5 +66,14 @@ namespace MeuProjeto.Controllers
                 "Index",
                 "Home");
         }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+
+            return RedirectToAction(
+                "Login",
+                "Conta");
+        }
     }
 }
