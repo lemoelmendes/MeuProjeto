@@ -1,9 +1,11 @@
+using MeuProjeto.Filters;
 using MeuProjeto.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace MeuProjeto.Controllers
 {
+    [Autenticado]
     public class HomeController : Controller
     {
         public IActionResult Index()
