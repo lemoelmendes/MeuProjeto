@@ -51,6 +51,15 @@ namespace MeuProjeto.Controllers
                 return View(model);
             }
 
+            if (!usuario.Ativo)
+            {
+                ModelState.AddModelError(
+                    "",
+                    "Usuário desativado.");
+
+                return View(model);
+            }
+
             HttpContext.Session.SetInt32(
                 "UsuarioId",
                 usuario.Id);
