@@ -1,0 +1,31 @@
+﻿@model MeuProjeto.ViewModels.UsuarioCreateViewModel
+
+<h1>Novo Usuário</h1>
+
+<form asp-action="Create" method="post">
+
+    <div>
+        <label asp-for="Nome"></label>
+        <input asp-for="Nome" />
+        <span asp-validation-for="Nome"></span>
+    </div>
+
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div>
+        <label asp-for="Senha"></label>
+        <input asp-for="Senha" type="password" />
+        <span asp-validation-for="Senha"></span>
+    </div>
+
+    <button type="submit">
+        Salvar
+    </button>
+
+</form>
+
+<div asp-validation-summary="All"></div>

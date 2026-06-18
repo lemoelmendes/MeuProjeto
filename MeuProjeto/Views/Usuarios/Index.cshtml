@@ -1,0 +1,67 @@
+﻿@model IEnumerable<MeuProjeto.ViewModels.UsuarioViewModel>
+@if (TempData["Erro"] != null)
+{
+    <div>
+        @TempData["Erro"]
+    </div>
+}
+
+<h1>Usuários</h1>
+
+<p>
+    <a asp-action="Create">Novo Usuário</a>
+</p>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Perfil</th>
+            <th>Ativo</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var usuario in Model)
+        {
+            <tr>
+                <td>@usuario.Nome</td>
+                <td>@usuario.Email</td>
+                <td>@usuario.Perfil</td>
+                <td>
+                    @if (usuario.Ativo)
+                    {
+                        <span>Ativo</span>
+                    }
+                    else
+                    {
+                        <span>Inativo</span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@usuario.Id">Editar</a>
+                    @if (usuario.Ativo)
+                    {
+                        <form asp-action="Desativar" method="post" style="display:inline">
+                            <input type="hidden" name="id" value="@usuario.Id" />
+                            <button type="submit">Desativar</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <form asp-action="Reativar" method="post" style="display:inline">
+                            <input type="hidden" name="id" value="@usuario.Id" />
+                            <button type="submit">Reativar</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>

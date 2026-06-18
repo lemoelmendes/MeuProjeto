@@ -1,0 +1,32 @@
+﻿@model MeuProjeto.ViewModels.UsuarioEditViewModel
+
+<h1>Editar Usuário</h1>
+
+<form asp-action="Edit" method="post">
+
+    <input asp-for="Id" type="hidden" />
+
+    <div>
+        <label asp-for="Nome"></label>
+        <input asp-for="Nome" />
+        <span asp-validation-for="Nome"></span>
+    </div>
+
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div>
+        <label asp-for="Ativo"></label>
+        <input asp-for="Ativo" type="checkbox" />
+    </div>
+
+    <button type="submit">
+        Salvar
+    </button>
+
+</form>
+
+<div asp-validation-summary="All"></div>

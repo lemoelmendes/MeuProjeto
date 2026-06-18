@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "_LayoutPublic";
+}
+
+@model MeuProjeto.ViewModels.LoginViewModel
+
+<h2>Login</h2>
+
+<form asp-action="Login" method="post">
+
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div>
+        <label asp-for="Senha"></label>
+        <input asp-for="Senha" type="password" />
+        <span asp-validation-for="Senha"></span>
+    </div>
+
+    <button type="submit">
+        Entrar
+    </button>
+
+    <p>
+        Não possui conta?
+        <a asp-action="Registrar">
+            Cadastre-se
+        </a>
+    </p>
+
+</form>
+
+<div asp-validation-summary="All"></div>
