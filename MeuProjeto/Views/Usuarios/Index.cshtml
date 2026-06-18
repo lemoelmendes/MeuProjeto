@@ -1,0 +1,30 @@
+﻿@model IEnumerable<MeuProjeto.ViewModels.UsuarioViewModel>
+
+<h1>Usuários</h1>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Perfil</th>
+            <th>Ativo</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var usuario in Model)
+        {
+            <tr>
+                <td>@usuario.Nome</td>
+                <td>@usuario.Email</td>
+                <td>@usuario.Perfil</td>
+                <td>@usuario.Ativo</td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
